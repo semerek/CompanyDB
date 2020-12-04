@@ -37,7 +37,7 @@ exports.getById = async (req, res) => {
 
 }
 
-exports.postAll = async (req, res) => {
+exports.addNew = async (req, res) => {
 
     try {
 

@@ -3,9 +3,10 @@ const expect = require('chai').expect;
 const mongoose = require('mongoose');
 const MongoMemoryServer = require('mongodb-memory-server').MongoMemoryServer;
 
+
 describe('Employee', () => {
 
-  beforeEach(async () => {
+  before(async () => {
 
     try {
       const fakeDB = new MongoMemoryServer();
@@ -32,13 +33,12 @@ describe('Employee', () => {
     it('should return all data with "find" method', async () => {
       const employees = await Employee.find();
       const expectedLength = 3;
-
       expect(employees.length).to.be.equal(expectedLength);
     });
 
     it('should return proper document by various params with "findOne" method', async () => {
-      const employee = await Employee.findOne({ lastName: 'Surname' });
-      expect(employee.lastName).to.be.equal('Surname');
+      const employee = await Employee.findOne({ lastName: 'Surname 1' });
+      expect(employee.lastName).to.be.equal('Surname 1');
         
     });
     
@@ -61,6 +61,7 @@ describe('Employee', () => {
   });
 
   describe('Updating data', () => {
+
     beforeEach(async () => {
       const testEmpOne = new Employee({ firstName: 'Name 1', lastName: 'Surname 1', department: 'Department #1' });
       await testEmpOne.save();  
@@ -99,6 +100,7 @@ describe('Employee', () => {
   });
 
   describe('Removing data', () => { 
+
     beforeEach(async () => {
       const testEmpOne = new Employee({ firstName: 'Name 1', lastName: 'Surname 1', department: 'Department #1' });
       await testEmpOne.save();  
@@ -133,6 +135,10 @@ describe('Employee', () => {
       await Employee.deleteMany();
     });
 
+  });
+  
+  after(() => {
+    mongoose.models = {};
   });
 
 });

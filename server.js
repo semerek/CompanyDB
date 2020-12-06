@@ -21,7 +21,8 @@ app.use((req, res) => {
 })
 
 // connects our backend code with the database
-mongoose.connect('mongodb://localhost:27017/companyDB', { useNewUrlParser: true });
+mongoose.connect('mongodb+srv://new-user-56:music-festival-25@cluster0.mqwtd.mongodb.net/NewWaveDB?retryWrites=true&w=majority', { useNewUrlParser: true });
+
 const db = mongoose.connection;
 
 db.once('open', () => {
@@ -29,8 +30,8 @@ db.once('open', () => {
 });
 db.on('error', err => console.log('Error ' + err));
 
-app.listen('8000', () => {
+const server = app.listen('8000', () => {
   console.log('Server is running on port: 8000');
 });
 
-//mongodb+srv://<username>:<password>@cluster0.mqwtd.mongodb.net/<dbname>?retryWrites=true&w=majority
+module.exports = server;

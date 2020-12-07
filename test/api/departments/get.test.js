@@ -16,7 +16,7 @@ describe('GET /api/departments', () => {
     await testDepTwo.save();
   });
 
-  it('/ should return all departments', () => {
+  it('/ should return all departments', async () => {
     const res = await request(server).get('/api/departments');
     expect(res.status).to.be.equal(200);
     expect(res.body).to.be.an('array');
@@ -24,7 +24,7 @@ describe('GET /api/departments', () => {
 
   });
 
-  it('/:id should return one department by :id ', () => {
+  it('/:id should return one department by :id ', async () => {
     const res = await request(server).get('/api/departments/5d9f1140f10a81216cfd4408');
     expect(res.status).to.be.equal(200);
     expect(res.body).to.be.an('object');
@@ -32,7 +32,7 @@ describe('GET /api/departments', () => {
 
   });
 
-  it('/random should return one random department', () => {
+  it('/random should return one random department', async () => {
     const res = await request(server).get('/api/departments/random');
     expect(res.status).to.be.equal(200);
     expect(res.body).to.be.an('object');

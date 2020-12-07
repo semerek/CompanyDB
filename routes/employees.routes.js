@@ -8,7 +8,7 @@ router.get('/employees', EmployeeController.getAll);
 router.get('/employees/random', EmployeeController.getRandom);
 router.get('/employees/:id', EmployeeController.getById);
 router.post('/employees', EmployeeController.addNew);
-router.put('employees/:id', EmployeeController.updateById);
-router.delete('employees/:id', EmployeeController.deleteById);
+router.put('/employees/:id', EmployeeController.updateById);
+router.delete('/employees/:id', EmployeeController.deleteById);
 
 module.exports = router;
